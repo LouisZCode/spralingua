@@ -12,8 +12,11 @@ core_bp = Blueprint('core', __name__)
 
 @core_bp.route('/')
 def landing():
-    """Landing page route."""
-    if session.get('authenticated'):
-        return redirect(url_for('auth.dashboard'))
+    """Landing page route.
+
+    V1 is archived. The site now shows a restructuring notice while V2 is
+    built separately. The original landing page is preserved untouched at
+    templates/landing.html and can be restored by rendering it here again.
+    """
     timestamp = datetime.utcnow().strftime('%Y%m%d%H%M%S')
-    return render_template('landing.html', timestamp=timestamp)
+    return render_template('restructuring.html', timestamp=timestamp)
